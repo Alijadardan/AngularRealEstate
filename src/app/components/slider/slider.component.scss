@@ -1,0 +1,154 @@
+@import "../../../styles/variables";
+.slider {
+  height: 640px;
+
+  &__control {
+    &-prev {
+      position: absolute;
+      background-color: $black;
+      opacity: 0.8;
+      width: 50px;
+      height: 50px;
+      bottom: 360px;
+      transition: opacity 0.15s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      left: 0;
+
+      .carousel-control-prev-icon {
+        width: 12px;
+      }
+
+      &:hover {
+        background-color: $primary;
+        opacity: 1;
+      }
+    }
+    &-next {
+      position: absolute;
+      background-color: $black;
+      opacity: 0.8;
+      width: 50px;
+      height: 50px;
+      bottom: 360px;
+      transition: opacity 0.15s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      right: 0;
+
+      .carousel-control-next-icon {
+        width: 12px;
+      }
+
+      &:hover {
+        background-color: $primary;
+        opacity: 1;
+      }
+    }
+  }
+
+  &__body {
+    height: calc(100% - 100px);
+    display: flex;
+    align-items: center;
+  }
+
+  &__indicators {
+    bottom: 100px;
+    margin-bottom: 0;
+
+    li {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+  }
+
+  &__featured {
+    color: $white;
+
+    &-title {
+      font-family: "Dosis";
+      margin-bottom: 20px;
+      font-size: 32px;
+      letter-spacing: 2px;
+    }
+
+    &-description {
+      font-family: "Merriweather";
+      margin-bottom: 30px;
+      font-size: 16px;
+      line-height: 24px;
+    }
+  }
+
+  &__btn {
+    &-all {
+      font-family: "Dosis";
+      background: transparent;
+      border: none;
+      padding: 20px 0;
+      color: $white;
+      font-size: 14px;
+      letter-spacing: 1px;
+      border-radius: 3px;
+      margin-left: 40px;
+    }
+  }
+
+  &__image {
+    img {
+      width: 400px;
+      height: 400px;
+      object-fit: cover;
+      border: 10px solid $white;
+      border-radius: 50%;
+      margin-left: auto;
+    }
+
+    &-circle {
+      position: absolute;
+      width: 150px;
+      height: 150px;
+      background: $primary;
+      border: 5px solid $white;
+      border-radius: 50%;
+      bottom: 14px;
+      display: flex;
+    }
+
+    &-price {
+      font-family: "Dosis";
+      font-size: 24px;
+      letter-spacing: 1px;
+      color: $white;
+      margin: auto;
+    }
+
+    &-forsale {
+      font-family: "Merriweather BoldItalic";
+      font-size: 14px;
+      letter-spacing: 1px;
+      color: $dark-gray;
+    }
+
+    &-title {
+      position: absolute;
+      background: $white;
+      padding: 20px 0;
+      width: 80%;
+      bottom: 60px;
+      right: 0;
+
+      span {
+        font-size: 18px;
+        letter-spacing: 1px;
+        color: $light-gray;
+        font-family: "Dosis";
+        margin: auto;
+      }
+    }
+  }
+}

@@ -1,0 +1,17 @@
+@import "../../../styles/variables";
+.nav {
+  color: $white;
+  font-family: "Dosis";
+  padding: 25px 0;
+
+  &-item {
+    text-transform: uppercase;
+    margin-right: 24px;
+    font-size: 14px;
+    letter-spacing: 1px;
+  }
+
+  &-link {
+    color: $white;
+  }
+}
