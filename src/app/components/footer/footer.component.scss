@@ -1,0 +1,155 @@
+@import "../../../styles/variables";
+.footer {
+  margin-top: 80px;
+  padding-bottom: 130px;
+
+  &__background {
+    background-image: url(../../../assets/img/background-glass-3.png),
+      url(../../../assets/img/background-house-1.png);
+    background-repeat: no-repeat;
+    background-position: bottom, bottom right;
+    background-size: auto 130px, auto 200px;
+    max-width: 1600px;
+    margin: auto;
+  }
+
+  h3 {
+    font-size: 18px;
+    letter-spacing: 1px;
+    color: $secondary;
+    font-family: "Dosis";
+    margin-bottom: 30px;
+  }
+
+  &__about {
+    &-content {
+      font-size: 14px;
+      line-height: 20px;
+      color: $gray;
+      font-family: "Merriweather";
+    }
+  }
+
+  &__list {
+    margin: 0;
+    padding: 0 15px;
+    list-style-image: url("../../../assets/svg/caret-right-solid.svg");
+
+    &-item {
+      font-size: 14px;
+      letter-spacing: 1px;
+      color: $gray;
+      margin-bottom: 10px;
+    }
+  }
+
+  &__blog {
+    &-card {
+      margin-bottom: 20px;
+      > img {
+        height: 82px;
+      }
+    }
+
+    &-content {
+      margin-left: 15px;
+    }
+
+    &-title {
+      font-size: 14px;
+      color: $gray;
+      font-family: "Lora";
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
+
+    &-tag {
+      border-radius: 3px;
+      padding: 5px;
+      background-color: $primary;
+      font-size: 11px;
+      letter-spacing: 1px;
+      color: $white;
+      font-weight: 700;
+      font-family: "Dosis";
+      text-align: center;
+      margin-right: 15px;
+      text-transform: uppercase;
+    }
+
+    &-date {
+      font-size: 11px;
+      letter-spacing: 1px;
+      color: $gray;
+
+      span {
+        margin-left: 5px;
+      }
+    }
+  }
+
+  &__copyright {
+    &-text {
+      font-size: 16px;
+      letter-spacing: 1px;
+      color: $gray;
+      font-weight: 600;
+      font-family: "Dosis";
+      margin-left: 40px;
+      margin-bottom: 15px;
+      margin-top: auto;
+    }
+  }
+}
+
+/* Media query */
+
+@media (max-width: 768px) {
+  .footer {
+    margin-top: 30px;
+    padding-bottom: 30px;
+
+    h3 {
+      font-size: 18px;
+      letter-spacing: 1px;
+      color: $secondary;
+      font-family: "Dosis";
+      margin-bottom: 10px;
+    }
+
+    &__background {
+      background-image: none;
+    }
+
+    &__about {
+      margin-bottom: 15px;
+    }
+
+    &__blog {
+      margin-top: 15px;
+      &-date {
+        margin-top: 5px;
+      }
+    }
+
+    &__copyright {
+      img {
+        height: 63px;
+        margin: auto;
+      }
+
+      &-text {
+        margin: 0;
+        margin-top: 15px;
+      }
+    }
+  }
+}
+
+@media (max-width: 991px) {
+  .footer {
+    &__background {
+      background-size: auto 90px, auto 150px;
+    }
+  }
+}

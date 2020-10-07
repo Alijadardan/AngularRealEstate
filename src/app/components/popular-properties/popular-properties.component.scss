@@ -1,0 +1,67 @@
+@import "../../../styles/variables";
+.popular {
+  border: 10px solid $light-gray;
+  border-top: none;
+  padding: 35px 25px 25px 25px;
+  position: relative;
+  &__card {
+    margin-bottom: 10px;
+    padding: 0 5px;
+    img {
+      width: 100%;
+    }
+
+    &-title {
+      position: absolute;
+      top: 0;
+      bottom: 0px;
+      right: 5px;
+      left: 5px;
+      display: flex;
+      background-color: $black;
+      opacity: 0.8;
+
+      h3 {
+        font-size: 16px;
+        letter-spacing: 1px;
+        color: $white;
+        font-family: "Dosis";
+        text-align: center;
+        margin: auto;
+        width: 60%;
+      }
+    }
+  }
+
+  &__title {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    h5 {
+      width: 100%;
+      text-align: center;
+      border-bottom: 10px solid $light-gray;
+      line-height: 0em;
+
+      span {
+        background: white;
+        padding: 0 20px;
+        font-size: 18px;
+        letter-spacing: 1px;
+        color: $primary;
+        font-family: "Dosis";
+        text-align: center;
+      }
+    }
+  }
+}
+
+/* Media query */
+
+@media (max-width: 768px) {
+  .popular {
+    padding: 30px 15px 10px 15px;
+  }
+}

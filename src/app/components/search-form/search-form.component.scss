@@ -1,0 +1,70 @@
+@import "../../../styles/variables";
+.search {
+  background-color: $white;
+  padding: 40px 30px;
+  position: relative;
+
+  border-bottom: 2px solid $gray-100;
+
+  &::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    -webkit-box-shadow: 0 10px 85px rgba(0, 0, 0, 0.8);
+    box-shadow: 0 10px 85px rgba(0, 0, 0, 0.8);
+    bottom: 50px;
+    left: 15%;
+    right: 15%;
+    width: 70%;
+    height: 50%;
+    -moz-border-radius: 100%;
+    border-radius: 100%;
+  }
+
+  &__firstrow {
+    margin-bottom: 30px;
+  }
+
+  &__select {
+    font-family: "Merriweather";
+    font-size: 14px;
+    letter-spacing: 1px;
+    color: $gray;
+    padding: 13px 20px;
+    border-radius: 3px;
+    background-color: $white;
+    border: 2px solid $gray-100;
+    text-align: left;
+    width: 100%;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url(../../../assets/svg/caret-down-solid.svg);
+    background-repeat: no-repeat;
+    background-position: right;
+    background-origin: content-box;
+    &:focus {
+      outline: none;
+    }
+
+    img {
+      margin: auto 0 auto auto;
+    }
+  }
+
+  &__keyword {
+    font-family: "Merriweather";
+    font-size: 14px;
+    letter-spacing: 1px;
+    &-input {
+      padding: 13px 20px;
+      width: 100%;
+      border-radius: 3px;
+      background-color: $white;
+      border: 2px solid $gray-100;
+
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+}
