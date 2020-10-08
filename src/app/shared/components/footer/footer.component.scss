@@ -1,4 +1,4 @@
-@import "../../../styles/variables";
+@import "../../../../styles/variables";
 .footer {
   margin-top: 80px;
   padding-bottom: 130px;
@@ -6,8 +6,8 @@
   -webkit-transform: translateZ(0) scale(1.0, 1.0);
 
   &__background {
-    background-image: url(../../../assets/img/background-glass-3.png),
-      url(../../../assets/img/background-house-1.png);
+    background-image: url(../../../../assets/img/background-glass-3.png),
+      url(../../../../assets/img/background-house-1.png);
     background-repeat: no-repeat;
     background-position: bottom, bottom right;
     background-size: auto 130px, auto 200px;
@@ -35,7 +35,7 @@
   &__list {
     margin: 0;
     padding: 0 15px;
-    list-style-image: url("../../../assets/svg/caret-right-solid.svg");
+    list-style-image: url("../../../../assets/svg/caret-right-solid.svg");
 
     &-item {
       font-size: 14px;

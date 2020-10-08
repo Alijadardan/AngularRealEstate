@@ -1,6 +1,8 @@
 @import "../../../styles/variables";
 .slider {
   height: 640px;
+  max-width: 1600px;
+  margin: auto;
 
   &__control {
     &-prev {
