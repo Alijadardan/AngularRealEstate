@@ -1,10 +1,10 @@
 <nav class="navbar navbar-expand navbar-dark bg-dark">
   <div class="container px-3">
-    <a class="navbar-brand" href="index.html">Real One Estate</a>
+    <a class="navbar-brand" routerLink="/">Real One Estate</a>
     <!-- Navbar Search-->
-    <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
+    <form [formGroup]="searchForm" class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
         <div class="input-group">
-            <input class="form-control" type="text" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2" />
+            <input formControlName="search" class="form-control" type="text" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2" />
             <div class="input-group-append">
                 <button class="btn bg-white" type="button">
                   <img src="../../../../../assets/svg/search-solid.svg" alt="">
@@ -22,7 +22,7 @@
                 <a class="dropdown-item" href="#">Settings</a>
                 <a class="dropdown-item" href="#">Activity Log</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" routerLink="/">Logout</a>
+                <button class="dropdown-item" (click)="logout()">Logout</button>
             </div>
         </li>
     </ul>

@@ -7,14 +7,21 @@
                       <div class="card shadow-lg border-0 rounded-lg mt-5">
                           <div class="card-header"><h3 class="text-center font-weight-light my-4">Login</h3></div>
                           <div class="card-body">
-                              <form>
+                              <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
                                   <div class="form-group">
                                       <label class="small mb-1" for="inputEmailAddress">Email</label>
-                                      <input class="form-control py-4" id="inputEmailAddress" type="email" placeholder="Enter email address" />
+                                      <input formControlName="email" [ngClass]="{'is-invalid': form.email.invalid && (form.email.dirty || form.email.touched)}" class="form-control py-4" id="inputEmailAddress" type="email" placeholder="Enter email address" required />
+                                      <div *ngIf="form.email.invalid && (form.email.dirty || form.email.touched)" class="invalid-feedback">
+                                        <div *ngIf="form.email.errors?.required">Email is required</div>
+                                        <div *ngIf="form.email.errors?.email">Provide a valid email</div>
+                                      </div>
                                   </div>
                                   <div class="form-group">
                                       <label class="small mb-1" for="inputPassword">Password</label>
-                                      <input class="form-control py-4" id="inputPassword" type="password" placeholder="Enter password" />
+                                      <input formControlName="password" [ngClass]="{'is-invalid': form.password.invalid && (form.password.dirty || form.password.touched)}" class="form-control py-4" id="inputPassword" type="password" placeholder="Enter password" required />
+                                      <div *ngIf="form.password.invalid && (form.password.dirty || form.password.touched)" class="invalid-feedback">
+                                        Password is required
+                                      </div>
                                   </div>
                                   <div class="form-group">
                                       <div class="custom-control custom-checkbox">
@@ -24,7 +31,7 @@
                                   </div>
                                   <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
                                       <a class="small" routerLink="/reset" routerLinkActive="router-link-active" >Forgot Password?</a>
-                                      <a class="btn btn-primary" href="/admin">Login</a>
+                                      <button class="btn btn-primary" type="submit" [disabled]="!loginForm.valid">Login</button>
                                   </div>
                               </form>
                           </div>

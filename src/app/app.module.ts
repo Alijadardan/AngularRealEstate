@@ -20,6 +20,7 @@ import { PropertieCardComponent } from './shared/components/propertie-card/prope
 import { PopularPropertiesComponent } from './components/popular-properties/popular-properties.component';
 import { AgentsComponent } from './components/agents/agents.component';
 import { MatSliderModule } from '@angular/material/slider';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { MatSliderModule } from '@angular/material/slider';
     LoginModule,
     RegisterModule,
     ResetModule,
+    HttpClientModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
   providers: [],

@@ -4,14 +4,14 @@
   </div>
   <div class="card-body">
     <div class="about">
-      <form>
+      <form [formGroup]="aboutForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
           <label for="about-title">Title:</label>
-          <input type="email" class="form-control" id="about-title" placeholder="Enter About Title">
+          <input formControlName="title" type="text" class="form-control" id="about-title" placeholder="Enter About Title">
         </div>
         <div class="form-group">
           <label for="about-content">Body:</label>
-          <textarea class="form-control" id="about-content" rows="5" placeholder="Enter About Content"></textarea>
+          <textarea formControlName="body" class="form-control" id="about-content" rows="5" placeholder="Enter About Content"></textarea>
         </div>
         <button type="submit" class="btn btn-primary">Update</button>
       </form>

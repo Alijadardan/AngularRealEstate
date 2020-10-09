@@ -1,3 +1,4 @@
+import { DirtyCheckGuard } from './../../shared/guards/dirty-check.guard';
 import { AboutComponent } from './components/about/about.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { AticlesComponent } from './components/aticles/aticles.component';
@@ -24,7 +25,8 @@ const routes: Routes = [
       },
       {
         path: 'about',
-        component: AboutComponent
+        component: AboutComponent,
+        canDeactivate: [DirtyCheckGuard]
       }
     ]
   },

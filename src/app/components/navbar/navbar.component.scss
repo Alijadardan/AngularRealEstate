@@ -15,3 +15,24 @@
     color: $white;
   }
 }
+
+/* Media query */
+
+@media (max-width: 1199px) {
+  .nav {
+
+    &-item {
+      a {
+        padding: 0;
+      }
+      font-size: 12px;
+    }
+
+    &__submit {
+      button {
+        font-size: 12px !important;
+        padding: 10px 5px;
+      }
+    }
+  }
+}

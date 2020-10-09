@@ -1,55 +1,79 @@
 <div id="layoutAuthentication">
   <div id="layoutAuthentication_content">
-      <main>
-          <div class="container">
-              <div class="row justify-content-center">
-                  <div class="col-lg-7">
-                      <div class="card shadow-lg border-0 rounded-lg mt-5">
-                          <div class="card-header"><h3 class="text-center font-weight-light my-4">Create Account</h3></div>
-                          <div class="card-body">
-                              <form>
-                                  <div class="form-row">
-                                      <div class="col-md-6">
-                                          <div class="form-group">
-                                              <label class="small mb-1" for="inputFirstName">First Name</label>
-                                              <input class="form-control py-4" id="inputFirstName" type="text" placeholder="Enter first name" />
-                                          </div>
-                                      </div>
-                                      <div class="col-md-6">
-                                          <div class="form-group">
-                                              <label class="small mb-1" for="inputLastName">Last Name</label>
-                                              <input class="form-control py-4" id="inputLastName" type="text" placeholder="Enter last name" />
-                                          </div>
-                                      </div>
-                                  </div>
-                                  <div class="form-group">
-                                      <label class="small mb-1" for="inputEmailAddress">Email</label>
-                                      <input class="form-control py-4" id="inputEmailAddress" type="email" aria-describedby="emailHelp" placeholder="Enter email address" />
-                                  </div>
-                                  <div class="form-row">
-                                      <div class="col-md-6">
-                                          <div class="form-group">
-                                              <label class="small mb-1" for="inputPassword">Password</label>
-                                              <input class="form-control py-4" id="inputPassword" type="password" placeholder="Enter password" />
-                                          </div>
-                                      </div>
-                                      <div class="col-md-6">
-                                          <div class="form-group">
-                                              <label class="small mb-1" for="inputConfirmPassword">Confirm Password</label>
-                                              <input class="form-control py-4" id="inputConfirmPassword" type="password" placeholder="Confirm password" />
-                                          </div>
-                                      </div>
-                                  </div>
-                                  <div class="form-group mt-4 mb-0"><a class="btn btn-primary btn-block" href="login.html">Create Account</a></div>
-                              </form>
-                          </div>
-                          <div class="card-footer text-center">
-                              <div class="small"><a routerLink="/login">Have an account? Go to login</a></div>
-                          </div>
-                      </div>
-                  </div>
+    <main>
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-7">
+            <div class="card shadow-lg border-0 rounded-lg mt-5">
+              <div class="card-header">
+                <h3 class="text-center font-weight-light my-4">Create Account</h3>
               </div>
+              <div class="card-body">
+                <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                  <div class="form-group">
+                    <label class="small mb-1" for="inputName">First Name</label>
+                    <input formControlName="name"
+                      [ngClass]="{'is-invalid': form.name.invalid && (form.name.dirty || form.name.touched)}"
+                      class="form-control py-4" id="inputName" type="text" placeholder="Enter full Name"
+                      required />
+                    <div *ngIf="form.name.invalid && (form.name.dirty || form.name.touched)"
+                      class="invalid-feedback">
+                      <div *ngIf="form.name.errors?.required">Full Name is required</div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="small mb-1" for="inputEmailAddress">Email</label>
+                    <input formControlName="email"
+                      [ngClass]="{'is-invalid': form.email.invalid && (form.email.dirty || form.email.touched)}"
+                      class="form-control py-4" id="inputEmailAddress" type="email" placeholder="Enter email address"
+                      required />
+                    <div *ngIf="form.email.invalid && (form.email.dirty || form.email.touched)"
+                      class="invalid-feedback">
+                      <div *ngIf="form.email.errors?.required">Email is required</div>
+                      <div *ngIf="form.email.errors?.email">Provide a valid email</div>
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label class="small mb-1" for="inputPassword">Password</label>
+                        <input formControlName="password"
+                          [ngClass]="{'is-invalid': form.password.invalid && (form.password.dirty || form.password.touched)}"
+                          class="form-control py-4" id="inputPassword" type="password" placeholder="Enter password" />
+                        <div *ngIf="form.password.invalid && (form.password.dirty || form.password.touched)"
+                          class="invalid-feedback">
+                          <div *ngIf="form.password.errors?.required">Password is required</div>
+                          <div *ngIf="form.password.errors?.minlength">Password must be at least 6 characters</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label class="small mb-1" for="inputConfirmPassword">Confirm Password</label>
+                        <input formControlName="password_confirmation"
+                          [ngClass]="{'is-invalid': form.password_confirmation.invalid && (form.password_confirmation.dirty || form.password_confirmation.touched)}"
+                          class="form-control py-4" id="inputConfirmPassword" type="password"
+                          placeholder="Confirm password" />
+                        <div
+                          *ngIf="form.password_confirmation.invalid && (form.password_confirmation.dirty || form.password_confirmation.touched)"
+                          class="invalid-feedback">
+                          <div *ngIf="form.password_confirmation.errors?.required">Confirm Password is required</div>
+                          <div *ngIf="form.password_confirmation.errors?.mustMatch">Passwords must match</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group mt-4 mb-0"><button class="btn btn-primary btn-block" type="submit"
+                      [disabled]="!registerForm.valid">Create Account</button></div>
+                </form>
+              </div>
+              <div class="card-footer text-center">
+                <div class="small"><a routerLink="/login">Have an account? Go to login</a></div>
+              </div>
+            </div>
           </div>
-      </main>
+        </div>
+      </div>
+    </main>
   </div>
 </div>
