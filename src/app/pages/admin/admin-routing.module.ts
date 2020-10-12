@@ -1,3 +1,4 @@
+import { AddEditArticlesComponent } from './components/add-edit-articles/add-edit-articles.component';
 import { DirtyCheckGuard } from './../../shared/guards/dirty-check.guard';
 import { AboutComponent } from './components/about/about.component';
 import { ContactComponent } from './components/contact/contact.component';
@@ -27,12 +28,22 @@ const routes: Routes = [
         path: 'about',
         component: AboutComponent,
         canDeactivate: [DirtyCheckGuard]
+      },
+      {
+        path: 'add',
+        component: AddEditArticlesComponent,
+        canDeactivate: [DirtyCheckGuard]
+      },
+      {
+        path: 'edit/:id',
+        component: AddEditArticlesComponent,
+        canDeactivate: [DirtyCheckGuard]
       }
     ]
   },
 
   // otherwise redirect to home
-  { path: '**', redirectTo: '' }
+  { path: '**', redirectTo: 'admin' }
 ];
 
 @NgModule({

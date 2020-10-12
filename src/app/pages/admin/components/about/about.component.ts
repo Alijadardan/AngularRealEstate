@@ -1,11 +1,11 @@
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AboutService } from './../../../../services/admin/about.service';
+import { AboutAdminService } from '../../../../services/admin/about-admin.service';
 import { Component, OnInit } from '@angular/core';
 import AboutUs from 'src/app/shared/models/AboutUs';
 import { Toast } from 'src/app/shared/helpers/Toast';
 
 @Component({
-  selector: 'app-about',
+  selector: 'admin-about',
   templateUrl: './about.component.html',
   styleUrls: ['./about.component.scss']
 })
@@ -15,7 +15,7 @@ export class AboutComponent implements OnInit {
   aboutForm: FormGroup;
   isDirty = false;
 
-  constructor(private aboutservice: AboutService,
+  constructor(private aboutAdminService: AboutAdminService,
     private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
@@ -29,7 +29,7 @@ export class AboutComponent implements OnInit {
   }
 
   updateAboutUs(data){
-    this.aboutservice.updateAboutUs(data).subscribe({
+    this.aboutAdminService.updateAboutUs(data).subscribe({
       next: (data) => {
         if(data.Message == "You didnt change anything."){
           Toast.fire({
@@ -42,13 +42,13 @@ export class AboutComponent implements OnInit {
             title: data.Message
           })
         }
-
+        this.isDirty = false;
       }
     });
   }
 
   getAboutUs(){
-    this.aboutservice.getAboutUs().subscribe((data)=>{
+    this.aboutAdminService.getAboutUs().subscribe((data)=>{
       this.about = data['About-Us'];
       this.aboutForm.patchValue({
         title: this.about.title,
@@ -63,6 +63,10 @@ export class AboutComponent implements OnInit {
       title: ['', Validators.required],
       body: ['', Validators.required]
     });
+  }
+
+  get form() {
+    return this.aboutForm.controls;
   }
 
   canDeactivate() {

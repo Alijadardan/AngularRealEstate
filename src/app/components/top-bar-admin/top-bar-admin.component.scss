@@ -1,0 +1,21 @@
+@import "../../../styles/variables";
+
+.top-bar-admin {
+  background-color: $primary;
+  font-family: "Dosis";
+  color: $white;
+
+  &__nav {
+    a {
+      text-decoration: none;
+    }
+
+    &-dashboard {
+      color: $white;
+    }
+
+    &-logout {
+      color: red;
+    }
+  }
+}

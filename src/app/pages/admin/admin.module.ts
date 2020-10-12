@@ -12,15 +12,35 @@ import { AticlesComponent } from './components/aticles/aticles.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { AboutComponent } from './components/about/about.component';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { AddEditArticlesComponent } from './components/add-edit-articles/add-edit-articles.component';
 
 @NgModule({
-  declarations: [AdminComponent, DashboardComponent, NavbarComponent, FooterComponent, SidebarComponent, AticlesComponent, ContactComponent, AboutComponent],
+  declarations: [
+    AdminComponent,
+    DashboardComponent,
+    NavbarComponent,
+    FooterComponent,
+    SidebarComponent,
+    AticlesComponent,
+    ContactComponent,
+    AboutComponent,
+    AddEditArticlesComponent
+  ],
   imports: [
     CommonModule,
     AdminRoutingModule,
     RouterModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatFormFieldModule,
+    MatInputModule
   ]
 })
 export class AdminModule { }

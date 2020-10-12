@@ -6,7 +6,7 @@ import Message from 'src/app/shared/models/Message';
 @Injectable({
   providedIn: 'root'
 })
-export class AboutService {
+export class AboutAdminService {
 
   baseUrl = "http://realestate-task.draft2017.com/api";
 

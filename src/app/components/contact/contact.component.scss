@@ -1,0 +1,38 @@
+@import "../../../styles/variables";
+
+.contact {
+
+  &__title {
+    font-size: 28px;
+    letter-spacing: 1px;
+    color: $secondary;
+    font-family: "Dosis";
+  }
+
+  &__form {
+    &-title {
+      font-size: 14px;
+      color: $gray;
+      font-family: "Dosis";
+    }
+  }
+
+  &__info{
+
+    &-title {
+      font-size: 20px;
+      color: $gray;
+      font-family: "Dosis";
+    }
+
+    &-address {
+      font-size: 16px;
+      color: $gray;
+    }
+
+    &-link {
+      text-decoration: none;
+      color: $gray;
+    }
+  }
+}

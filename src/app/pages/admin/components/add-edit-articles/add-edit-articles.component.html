@@ -1,0 +1,107 @@
+<div class="card">
+  <div class="card-header">
+    <div *ngIf="isAddMode">Add Article</div>
+    <div *ngIf="!isAddMode">Edit Article</div>
+  </div>
+  <div class="card-body">
+    <div class="about">
+      <form [formGroup]="addEditForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label class="small mb-1" for="inputTitle">Title:</label>
+          <input formControlName="title"
+            [ngClass]="{'is-invalid': form.title.invalid && (form.title.dirty || form.title.touched)}"
+            class="form-control py-4" id="inputTitle" type="text" placeholder="Enter Title" required />
+          <div *ngIf="form.title.invalid && (form.title.dirty || form.title.touched)" class="invalid-feedback">
+            <div *ngIf="form.title.errors?.required">Title is required</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="inputBody">Body:</label>
+          <textarea [ngClass]="{'is-invalid': form.body.invalid && (form.body.dirty || form.body.touched)}"
+            formControlName="body" class="form-control" id="inputBody" rows="5" placeholder="Enter Body"></textarea>
+          <div *ngIf="form.body.invalid && (form.body.dirty || form.body.touched)" class="invalid-feedback">
+            <div *ngIf="form.body.errors?.required">Body is required</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="small mb-1" for="inputCity">City:</label>
+          <select id="inputCity" [ngClass]="{'is-invalid': form.city.invalid && (form.city.dirty || form.city.touched)}"
+            class="custom-select" formControlName="city">
+            <option *ngFor="let city of citys" [ngValue]="city">
+              {{ city }}
+            </option>
+          </select>
+          <div *ngIf="form.city.invalid && (form.city.dirty || form.city.touched)" class="invalid-feedback">
+            <div *ngIf="form.city.errors?.required">City is required</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="small mb-1" for="inputAddress">Address:</label>
+          <input formControlName="address"
+            [ngClass]="{'is-invalid': form.address.invalid && (form.address.dirty || form.address.touched)}"
+            class="form-control py-4" id="inputAddress" type="text" placeholder="Enter Address" required />
+          <div *ngIf="form.address.invalid && (form.address.dirty || form.address.touched)" class="invalid-feedback">
+            <div *ngIf="form.address.errors?.required">Address is required</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="small mb-1" for="inputFor">For:</label>
+          <select id="inputFor" [ngClass]="{'is-invalid': form.for.invalid && (form.for.dirty || form.for.touched)}"
+            class="custom-select" formControlName="for">
+            <option *ngFor="let for of for" [ngValue]="for">
+              {{ for }}
+            </option>
+          </select>
+          <div *ngIf="form.for.invalid && (form.for.dirty || form.for.touched)" class="invalid-feedback">
+            <div *ngIf="form.for.errors?.required">For is required</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="small mb-1" for="inputPrice">Price:</label>
+          <input formControlName="price"
+            [ngClass]="{'is-invalid': form.price.invalid && (form.price.dirty || form.price.touched)}"
+            class="form-control py-4" id="inputPrice" type="text" placeholder="Ex: 200" required />
+          <small id="PriceHelp" class="form-text text-muted">Price should be in Euro €</small>
+          <div *ngIf="form.price.invalid && (form.price.dirty || form.price.touched)" class="invalid-feedback">
+            <div *ngIf="form.price.errors?.required">Price is required</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="small mb-1" for="inputType">Type:</label>
+          <select id="inputType" [ngClass]="{'is-invalid': form.type.invalid && (form.type.dirty || form.type.touched)}"
+            class="custom-select" formControlName="type">
+            <option *ngFor="let type of types" [ngValue]="type">
+              {{ type }}
+            </option>
+          </select>
+          <div *ngIf="form.type.invalid && (form.type.dirty || form.type.touched)" class="invalid-feedback">
+            <div *ngIf="form.type.errors?.required">Type is required</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="small mb-1" for="inputAvailable">Available:</label>
+          <select id="inputAvailable" [ngClass]="{'is-invalid': form.available.invalid && (form.available.dirty || form.available.touched)}"
+            class="custom-select" formControlName="available">
+            <option *ngFor="let available of availables" [ngValue]="available.id">
+              {{ available.name }}
+            </option>
+          </select>
+          <div *ngIf="form.available.invalid && (form.available.dirty || form.available.touched)" class="invalid-feedback">
+            <div *ngIf="form.available.errors?.required">Available is required</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="small mb-1" for="inputPhone">Phone Number:</label>
+          <input formControlName="phone_number"
+            [ngClass]="{'is-invalid': form.phone_number.invalid && (form.phone_number.dirty || form.phone_number.touched)}"
+            class="form-control py-4" id="inputPhone" type="text" placeholder="Enter Phone number" required />
+          <div *ngIf="form.phone_number.invalid && (form.phone_number.dirty || form.phone_number.touched)" class="invalid-feedback">
+            <div *ngIf="form.phone_number.errors?.required">Phone Number is required</div>
+          </div>
+        </div>
+        <button *ngIf="!isAddMode" type="submit" class="green-btn">Update</button>
+        <button *ngIf="isAddMode" type="submit" class="green-btn">Add</button>
+      </form>
+    </div>
+  </div>
+</div>

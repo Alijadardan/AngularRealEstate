@@ -1,0 +1,79 @@
+<div class="contact">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-6">
+        <div class="contact__info">
+          <div class="card border-0 rounded-lg mt-5">
+            <div class="card-header bg-white">
+              <h3 class="my-4 contact__title">Contact Info</h3>
+            </div>
+            <div class="card-body">
+              <div class="contact__info-title">Address</div>
+              <p class="contact__info-address">
+                203 Fake St. Mountain View, San Francisco, California, USA
+              </p>
+              <div class="contact__info-title">Phone</div>
+              <a class="contact__info-link" href="tel: +12323235324">+1 232 3235 324</a>
+              <div class="contact__info-title">Email Address</div>
+              <a class="contact__info-link" href="mailto: youremail@domain.com">youremail@domain.com</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="card border-0 rounded-lg mt-5">
+          <div class="card-header bg-white">
+            <h3 class="my-4 contact__title">Contact Us</h3>
+          </div>
+          <div class="card-body">
+            <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+              <div class="form-group">
+                <label class="small mb-1 contact__form-title" for="inputName">Full Name</label>
+                <input formControlName="name"
+                  [ngClass]="{'is-invalid': form.name.invalid && (form.name.dirty || form.name.touched)}"
+                  class="form-control py-4" id="inputName" type="text" placeholder="Enter full Name" required />
+                <div *ngIf="form.name.invalid && (form.name.dirty || form.name.touched)" class="invalid-feedback">
+                  <div *ngIf="form.name.errors?.required">Full Name is required</div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="small mb-1 contact__form-title" for="inputEmailAddress">Email</label>
+                <input formControlName="email"
+                  [ngClass]="{'is-invalid': form.email.invalid && (form.email.dirty || form.email.touched)}"
+                  class="form-control py-4" id="inputEmailAddress" type="email" placeholder="Enter email address"
+                  required />
+                <div *ngIf="form.email.invalid && (form.email.dirty || form.email.touched)" class="invalid-feedback">
+                  <div *ngIf="form.email.errors?.required">Email is required</div>
+                  <div *ngIf="form.email.errors?.email">Provide a valid email</div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="small mb-1 contact__form-title" for="inputSubjectAddress">Subject</label>
+                <input formControlName="subject"
+                  [ngClass]="{'is-invalid': form.subject.invalid && (form.subject.dirty || form.subject.touched)}"
+                  class="form-control py-4" id="inputSubjectAddress" type="email" placeholder="Enter subject"
+                  required />
+                <div *ngIf="form.subject.invalid && (form.subject.dirty || form.subject.touched)"
+                  class="invalid-feedback">
+                  <div *ngIf="form.subject.errors?.required">Subject is required</div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="small mb-1 contact__form-title" for="inputMessageAddress">Message</label>
+                <textarea formControlName="content"
+                  [ngClass]="{'is-invalid': form.content.invalid && (form.content.dirty || form.content.touched)}"
+                  class="form-control" id="inputMessageAddress" rows="5" placeholder="Enter Message"></textarea>
+                <div *ngIf="form.content.invalid && (form.content.dirty || form.content.touched)"
+                  class="invalid-feedback">
+                  <div *ngIf="form.content.errors?.required">Message is required</div>
+                </div>
+              </div>
+              <div class="form-group mt-4 mb-0"><button class="btn btn-primary btn-block" type="submit"
+                  [disabled]="!contactForm.valid">Create Account</button></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

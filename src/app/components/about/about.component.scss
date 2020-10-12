@@ -1,0 +1,64 @@
+@import "../../../styles/variables";
+
+.about {
+  &__img {
+    img {
+      width: 100%;
+      height: 100%;
+      margin-top: 105px;
+    }
+  }
+
+  &__title {
+    font-size: 28px;
+    letter-spacing: 1px;
+    color: $secondary;
+    font-family: "Dosis";
+  }
+
+  &__content {
+    font-size: 16px;
+    color: $gray;
+    font-family: "Merriweather";
+  }
+}
+
+.placeholder {
+  margin: 0 auto;
+  max-width: 200px;
+  min-height: 20px;
+  background-color: #eee;
+}
+
+@keyframes placeHolderShimmer {
+  0% {
+    background-position: -350px 0;
+  }
+  100% {
+    background-position: 350px 0;
+  }
+}
+
+.animated-background {
+  animation-duration: 1.25s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  animation-name: placeHolderShimmer;
+  animation-timing-function: linear;
+  background: darkgray;
+  background: linear-gradient(to right, #eeeeee 10%, #dddddd 18%, #eeeeee 33%);
+  background-size: 800px 104px;
+  height: 16px;
+}
+
+.animated-background__title {
+  animation-duration: 1.25s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  animation-name: placeHolderShimmer;
+  animation-timing-function: linear;
+  background: darkgray;
+  background: linear-gradient(to right, #eeeeee 10%, #dddddd 18%, #eeeeee 33%);
+  background-size: 800px 104px;
+  height: 28px;
+}

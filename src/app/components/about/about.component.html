@@ -1,0 +1,35 @@
+<div class="about">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-6">
+        <div class="about__img mt-5">
+          <img src="../../../assets/img/aboutus.jpg" alt="">
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="card border-0 rounded-lg mt-5">
+          <div class="card-header bg-white">
+            <div class="about__title my-4">
+              <h3 >{{ aboutus?.title }}</h3>
+            </div>
+            <div *ngIf="isLoading" class="placholder-title my-4">
+              <div class="animated-background__title"></div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="about__content">
+              {{ aboutus?.body }}
+              <div *ngIf="isLoading" class="placholder-title">
+                <div class="animated-background mb-2"></div>
+                <div class="animated-background mb-2"></div>
+                <div class="animated-background mb-2"></div>
+                <div class="animated-background mb-2"></div>
+                <div class="animated-background mb-2"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
