@@ -18,6 +18,7 @@ import { TopHeaderComponent } from 'src/app/shared/components/top-header/top-hea
 import { AboutComponent } from 'src/app/components/about/about.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TopBarAdminComponent } from 'src/app/components/top-bar-admin/top-bar-admin.component';
+import { SearchResultsComponent } from './../../components/search-results/search-results.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { TopBarAdminComponent } from 'src/app/components/top-bar-admin/top-bar-a
     PropertieCardComponent,
     PopularPropertiesComponent,
     AgentsComponent,
-    TopBarAdminComponent
+    TopBarAdminComponent,
+    SearchResultsComponent
   ],
   imports: [
     CommonModule,

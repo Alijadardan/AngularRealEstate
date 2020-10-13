@@ -1,0 +1,7 @@
+.mat-column-action {
+  text-align: right;
+  justify-content: flex-end;
+  &__delete {
+    margin-left: 15px;
+  }
+}

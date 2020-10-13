@@ -40,6 +40,15 @@
           <mat-cell *matCellDef="let row"> {{row.created_at}} </mat-cell>
         </ng-container>
 
+        <!-- Action Column -->
+        <ng-container matColumnDef="action">
+          <mat-header-cell *matHeaderCellDef> Action </mat-header-cell >
+          <mat-cell *matCellDef="let element" class="action-link">
+            <a class="mat-column-action__edit" type="button" routerLink="view/{{element.id}}"><img src="../../../../../assets/svg/eye-regular.svg" alt=""></a>
+            <a class="mat-column-action__delete" type="button" (click)="deleteContact(element.id)" ><img src="../../../../../assets/svg/trash-solid.svg" alt=""></a>
+          </mat-cell>
+        </ng-container>
+
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
         <mat-row *matRowDef="let row; columns: displayedColumns;">
         </mat-row>

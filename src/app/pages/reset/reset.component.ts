@@ -1,3 +1,4 @@
+import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ResetComponent implements OnInit {
 
-  constructor() { }
+  resetForm: FormGroup;
+
+  constructor(private formBuilder: FormBuilder) { }
+
 
   ngOnInit(): void {
+    this.buildForm();
   }
+
+  onSubmit(){
+
+  }
+
+
+  buildForm(){
+    this.resetForm = this.formBuilder.group({
+      email: ['', [Validators.required, Validators.email]]
+    });
+  }
+
+  get form() {
+    return this.resetForm.controls;
+  }
+
 
 }

@@ -17,7 +17,7 @@ export class AddEditArticlesComponent implements OnInit {
   isDirty = false;
   isAddMode: boolean;
   id: string;
-  citys: string[] = ['Gjakove', 'Prishtine', 'Mitrovice', 'Peje', 'Prizren', 'Gjilan', 'Ferizaj'];
+  citys: string[] = ['gjakove', 'prishtine', 'mitrovice', 'peje', 'prizren', 'gjilan', 'ferizaj'];
   for: string[] = ['both', 'sale', 'rent'];
   types: string[] = ['1+1', '2+1', '3+1', '3+2', '4+1', '4+2', '5+1'];
   availables: {id: number, name: string}[] = [
@@ -42,8 +42,29 @@ export class AddEditArticlesComponent implements OnInit {
   }
 
   onSubmit(){
-    console.log(this.addEditForm.value);
-    this.createArticle(this.addEditForm.value);
+    if (this.isAddMode) {
+      this.createArticle(this.addEditForm.value);
+    } else {
+      this.updateArticle(this.addEditForm.value);
+    }
+  }
+
+  updateArticle(data){
+    this.articleAdminService.updateArticle(this.id, data).subscribe({
+      next: (data) => {
+        Toast.fire({
+          icon: 'success',
+          title: data.message
+        })
+        this.addEditForm.reset();
+      },
+      error: error => {
+        Swal.fire({
+          text: 'Somthing went wrong :' + error,
+          icon: 'error'
+        });
+      }
+    });
   }
 
   createArticle(data){
@@ -75,7 +96,7 @@ export class AddEditArticlesComponent implements OnInit {
       type: ['1+1', Validators.required],
       available: [1, Validators.required],
       phone_number: ['', Validators.required],
-      filenames: ['', Validators.required]
+      // filenames: ['', Validators.required]
     });
   }
 
@@ -84,7 +105,6 @@ export class AddEditArticlesComponent implements OnInit {
     .pipe(first())
     .subscribe((data) => {
       data = data['Article'];
-      console.log(data);
       this.addEditForm.patchValue({
         title: data.title,
         body: data.body,

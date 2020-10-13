@@ -1,0 +1,12 @@
+<div class="card">
+  <div class="card-header">
+    Contact from: {{ contact?.name }}
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">{{ contact?.subject }}</h5>
+    <p class="card-text">{{ contact?.message }}</p>
+  </div>
+  <div class="card-footer text-muted">
+    {{ contact?.created_at }}
+  </div>
+</div>

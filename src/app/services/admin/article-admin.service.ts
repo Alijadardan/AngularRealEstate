@@ -21,6 +21,25 @@ export class ArticleAdminService {
   }
 
   createArticle(data){
-    return this.http.post<any>(this.baseUrl+"create-article", data, {headers: new HttpHeaders({'Authorization': 'Bearer ' + localStorage.getItem('userToken')})});
+    return this.http.post<any>(this.baseUrl+"/create-article", data, {headers: new HttpHeaders({'Authorization': 'Bearer ' + localStorage.getItem('userToken')})});
+  }
+
+  updateArticle(id, data){
+    console.log(id, data.title.toString());
+    return this.http.post<any>(this.baseUrl+"/update-article/"+id, {
+      'title': data.title,
+      // 'body': data.body,
+      // 'city': data.city,
+      // 'address': data.address,
+      // 'for': data.for,
+      // 'price': data.price,
+      // 'type': data.type,
+      // 'available': data.available,
+      // 'phonenumber': data.phone_number
+    }, {headers: new HttpHeaders({'Authorization': 'Bearer ' + localStorage.getItem('userToken')})});
+  }
+
+  deleteArticle(id){
+    return this.http.delete<any>(this.baseUrl+"/article/delete/"+id, {headers: new HttpHeaders({'Authorization': 'Bearer ' + localStorage.getItem('userToken')})});
   }
 }

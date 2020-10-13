@@ -18,6 +18,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { AddEditArticlesComponent } from './components/add-edit-articles/add-edit-articles.component';
+import { SingleContactComponent } from './components/single-contact/single-contact.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { AddEditArticlesComponent } from './components/add-edit-articles/add-edi
     AticlesComponent,
     ContactComponent,
     AboutComponent,
-    AddEditArticlesComponent
+    AddEditArticlesComponent,
+    SingleContactComponent
   ],
   imports: [
     CommonModule,

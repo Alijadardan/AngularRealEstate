@@ -1,3 +1,4 @@
+import { SingleContactComponent } from './components/single-contact/single-contact.component';
 import { AddEditArticlesComponent } from './components/add-edit-articles/add-edit-articles.component';
 import { DirtyCheckGuard } from './../../shared/guards/dirty-check.guard';
 import { AboutComponent } from './components/about/about.component';
@@ -38,6 +39,10 @@ const routes: Routes = [
         path: 'edit/:id',
         component: AddEditArticlesComponent,
         canDeactivate: [DirtyCheckGuard]
+      },
+      {
+        path: 'contact/view/:id',
+        component: SingleContactComponent
       }
     ]
   },

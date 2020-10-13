@@ -4,6 +4,7 @@
     <app-search-form></app-search-form>
   </div>
 </div>
-<app-featured-properties></app-featured-properties>
-<app-popular-properties></app-popular-properties>
-<app-agents></app-agents>
+<app-search-results></app-search-results>
+<app-featured-properties *ngIf="!isSearch"></app-featured-properties>
+<app-popular-properties *ngIf="!isSearch"></app-popular-properties>
+<app-agents *ngIf="!isSearch"></app-agents>
