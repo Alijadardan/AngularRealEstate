@@ -1,6 +1,6 @@
 import { ArticleAdminService } from './../../../../services/admin/article-admin.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { first } from 'rxjs/operators';
 import Swal from 'sweetalert2';
@@ -13,6 +13,7 @@ import { Toast } from 'src/app/shared/helpers/Toast';
 })
 export class AddEditArticlesComponent implements OnInit {
 
+  fileToUpload: File = null;
   addEditForm: FormGroup;
   isDirty = false;
   isAddMode: boolean;
@@ -26,6 +27,7 @@ export class AddEditArticlesComponent implements OnInit {
   ]
 
   constructor(private route: ActivatedRoute,
+    private router: Router,
     private formBuilder: FormBuilder,
     private articleAdminService: ArticleAdminService) { }
 
@@ -54,9 +56,11 @@ export class AddEditArticlesComponent implements OnInit {
       next: (data) => {
         Toast.fire({
           icon: 'success',
-          title: data.message
+          title: 'Article updated successfully'
         })
-        this.addEditForm.reset();
+        this.isDirty = false;
+        localStorage.removeItem('articlesData');
+        this.router.navigate(['admin/articles']);
       },
       error: error => {
         Swal.fire({
@@ -68,7 +72,7 @@ export class AddEditArticlesComponent implements OnInit {
   }
 
   createArticle(data){
-    this.articleAdminService.createArticle(data).subscribe({
+    this.articleAdminService.createArticle(data, this.fileToUpload).subscribe({
       next: (data) => {
         Toast.fire({
           icon: 'success',
@@ -92,11 +96,10 @@ export class AddEditArticlesComponent implements OnInit {
       price: ['', Validators.required],
       address: ['', Validators.required],
       city: ['', Validators.required],
-      for: ['', Validators.required],
+      for: ['both', Validators.required],
       type: ['1+1', Validators.required],
       available: [1, Validators.required],
       phone_number: ['', Validators.required],
-      // filenames: ['', Validators.required]
     });
   }
 
@@ -119,6 +122,10 @@ export class AddEditArticlesComponent implements OnInit {
       });
       this.isDirty = false;
     });
+  }
+
+  onFileChange(files: FileList) {
+    this.fileToUpload = files.item(0);
   }
 
   get form() {

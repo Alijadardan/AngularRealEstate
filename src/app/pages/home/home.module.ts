@@ -12,14 +12,15 @@ import { NavbarComponent } from './../../shared/components/navbar/navbar.compone
 import { HomeComponent } from './home.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { SearchResultsComponent } from './../../components/search-results/search-results.component';
+import { PropertieCardStaticComponent } from './../../shared/components/propertie-card-static/propertie-card-static.component';
 
 import { HomeRoutingModule } from './home-routing.module';
 import { TopHeaderComponent } from 'src/app/shared/components/top-header/top-header.component';
 import { AboutComponent } from 'src/app/components/about/about.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TopBarAdminComponent } from 'src/app/components/top-bar-admin/top-bar-admin.component';
-import { SearchResultsComponent } from './../../components/search-results/search-results.component';
-
+import { Ng5SliderModule } from 'ng5-slider';
 @NgModule({
   declarations: [
     HomeComponent,
@@ -36,13 +37,16 @@ import { SearchResultsComponent } from './../../components/search-results/search
     PopularPropertiesComponent,
     AgentsComponent,
     TopBarAdminComponent,
-    SearchResultsComponent
+    SearchResultsComponent,
+    PropertieCardStaticComponent
   ],
   imports: [
     CommonModule,
     HomeRoutingModule,
     ReactiveFormsModule,
-    MatSliderModule
+    MatSliderModule,
+    Ng5SliderModule,
+    FormsModule
   ]
 })
 export class HomeModule { }

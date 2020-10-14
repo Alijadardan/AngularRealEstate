@@ -1,0 +1,59 @@
+@import "../../../../styles/variables";
+.card {
+  &-body {
+    padding: 30px;
+    text-align: left;
+  }
+
+  &-title {
+    font-size: 18px;
+    color: $light-gray;
+    font-family: "Dosis";
+  }
+
+  &-text {
+    font-family: "Merriweather";
+    margin-bottom: 25px;
+    font-size: 14px;
+    line-height: 20px;
+    color: $light-gray;
+  }
+
+  &__price {
+    padding: 15px;
+    background-color: $secondary;
+    font-family: "Dosis";
+    font-size: 14px;
+    letter-spacing: 1px;
+    color: $white;
+    border: 2px solid $secondary;
+    border-radius: 3px;
+    width: 100%;
+  }
+
+  &__favorite {
+    border: 2px solid $primary;
+    border-radius: 3px;
+    width: 100%;
+    margin-right: 10px;
+
+    a {
+      padding: 15px;
+      font-family: "Dosis";
+      font-size: 14px;
+      letter-spacing: 1px;
+      color: $primary;
+      text-decoration: none;
+    }
+  }
+}
+
+/* Media query */
+
+@media (max-width: 768px) {
+  .card {
+    &-body {
+      padding: 15px;
+    }
+  }
+}

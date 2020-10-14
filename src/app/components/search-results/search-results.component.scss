@@ -1,3 +1,11 @@
-.search-result {
-  margin-top: 155px;
+.search-results {
+  margin-top: 150px;
+
+  &__notfound {
+    font-family: "Dosis";
+    text-transform: uppercase;
+    font-size: 14px;
+    letter-spacing: 1px;
+    margin: auto;
+  }
 }

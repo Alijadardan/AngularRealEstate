@@ -80,13 +80,15 @@
         </div>
         <div class="form-group">
           <label class="small mb-1" for="inputAvailable">Available:</label>
-          <select id="inputAvailable" [ngClass]="{'is-invalid': form.available.invalid && (form.available.dirty || form.available.touched)}"
+          <select id="inputAvailable"
+            [ngClass]="{'is-invalid': form.available.invalid && (form.available.dirty || form.available.touched)}"
             class="custom-select" formControlName="available">
             <option *ngFor="let available of availables" [ngValue]="available.id">
               {{ available.name }}
             </option>
           </select>
-          <div *ngIf="form.available.invalid && (form.available.dirty || form.available.touched)" class="invalid-feedback">
+          <div *ngIf="form.available.invalid && (form.available.dirty || form.available.touched)"
+            class="invalid-feedback">
             <div *ngIf="form.available.errors?.required">Available is required</div>
           </div>
         </div>
@@ -95,12 +97,17 @@
           <input formControlName="phone_number"
             [ngClass]="{'is-invalid': form.phone_number.invalid && (form.phone_number.dirty || form.phone_number.touched)}"
             class="form-control py-4" id="inputPhone" type="text" placeholder="Enter Phone number" required />
-          <div *ngIf="form.phone_number.invalid && (form.phone_number.dirty || form.phone_number.touched)" class="invalid-feedback">
+          <div *ngIf="form.phone_number.invalid && (form.phone_number.dirty || form.phone_number.touched)"
+            class="invalid-feedback">
             <div *ngIf="form.phone_number.errors?.required">Phone Number is required</div>
           </div>
         </div>
-        <button *ngIf="!isAddMode" type="submit" class="green-btn">Update</button>
-        <button *ngIf="isAddMode" type="submit" class="green-btn">Add</button>
+        <div class="form-group">
+          <label for="file">File</label>
+          <input id="file" type="file" class="form-control file__upload" multiple (change)="onFileChange($event.target.files)">
+        </div>
+        <button [disabled]="!addEditForm.valid" *ngIf="!isAddMode" type="submit" class="green-btn">Update</button>
+        <button [disabled]="!addEditForm.valid" *ngIf="isAddMode" type="submit" class="green-btn">Add</button>
       </form>
     </div>
   </div>

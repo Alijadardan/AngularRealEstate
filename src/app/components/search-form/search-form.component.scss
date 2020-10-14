@@ -1,7 +1,7 @@
 @import "../../../styles/variables";
 .search {
   background-color: $white;
-  padding: 40px 30px;
+  padding: 40px 30px 25px;
   position: relative;
 
   border-bottom: 2px solid $gray-100;
@@ -66,5 +66,53 @@
         outline: none;
       }
     }
+  }
+
+  &__submit {
+    &:hover {
+      background-color: $white;
+      color: $primary;
+    }
+  }
+}
+
+
+::ng-deep {
+  .range-slider .ng5-slider .ng5-slider-bar {
+    background: $gray-100;
+    height: 3px;
+  }
+
+  .range-slider .ng5-slider .ng5-slider-selection {
+    background: $primary;
+  }
+
+  .range-slider .ng5-slider .ng5-slider-pointer {
+    width: 10px;
+    height: 10px;
+    top: auto;
+    bottom: -2px;
+    background-color: $white;
+    border-radius: 50%;
+    border: 3px solid $primary;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .range-slider .ng5-slider .ng5-slider-bubble {
+    font-size: 16px;
+    color: $black;
+    font-family: "Merriweather";
+    text-align: center;
+    b {
+      color: $gray;
+      font-size: 14px;
+    }
+  }
+
+  .range-slider .ng5-slider .ng5-slider-pointer:after {
+    display: none;
   }
 }

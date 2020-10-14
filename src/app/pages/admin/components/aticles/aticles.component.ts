@@ -6,6 +6,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import Swal from 'sweetalert2';
 import { Toast } from 'src/app/shared/helpers/Toast';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'admin-aticles',
@@ -20,7 +21,8 @@ export class AticlesComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private articleAdminService: ArticleAdminService) { }
+  constructor(private articleAdminService: ArticleAdminService,
+    private router: Router) { }
 
   ngOnInit(): void {
     if(localStorage.getItem('articlesData')){
@@ -47,20 +49,39 @@ export class AticlesComponent implements OnInit, AfterViewInit {
     }).then((result) => {
       if(result.isConfirmed){
         console.log('delete', id);
-        // this.articleAdminService.deleteArticle(id).subscribe({
-        //   next: () => {
-        //     Toast.fire({
-        //       icon: 'success',
-        //       title: "Successfully Deleted"
-        //     })
-        //   },
-        //   error: error => {
-        //     Swal.fire({
-        //       text: 'Somthing went wrong :' + error,
-        //       icon: 'error'
-        //     });
-        //   }
-        // });
+        let placeholder;
+        let index;
+        let counter = 0;
+        this.articles = new MatTableDataSource(this.articles.data.filter(function(obj){
+          counter++;
+          if (obj.id == id) {
+            placeholder =  obj;
+            index = --counter;
+          }
+          return obj.id != id;
+        }));
+        localStorage.removeItem('contactData');
+        this.articles.paginator = this.paginator;
+        this.articles.sort = this.sort;
+        this.articles._updateChangeSubscription();
+        this.articleAdminService.deleteArticle(id).subscribe({
+          next: () => {
+            Toast.fire({
+              icon: 'success',
+              title: "Successfully Deleted"
+            })
+            localStorage.removeItem('articlesData');
+            this.router.navigate(['admin/articles']);
+          },
+          error: error => {
+            this.articles.data.splice(index, 0, placeholder);
+            this.articles._updateChangeSubscription();
+            Swal.fire({
+              text: 'Somthing went wrong :' + error,
+              icon: 'error'
+            });
+          }
+        });
       }else{
         return;
       }
@@ -79,6 +100,7 @@ export class AticlesComponent implements OnInit, AfterViewInit {
   getArticles(){
     this.articleAdminService.getArticles().subscribe({
       next: (data) => {
+        console.log(data['Articles'].data);
         this.articles = new MatTableDataSource(data['Articles'].data);
         this.saveLoaclStorage('articlesData', data['Articles'].data);
         this.articles.paginator = this.paginator;

@@ -1,5 +1,12 @@
 <div class="container">
-  <div class="search-result">
-This is search
+  <div class="search-results">
+    <div class="row">
+      <div class="search-results__notfound" *ngIf="empty">
+        No result found
+      </div>
+      <div *ngFor="let result of searchResults" class="col-12 col-md-4 mb-4">
+        <app-propertie-card [title]="result.title" [content]="result.body" [price]="result.price"></app-propertie-card>
+      </div>
+    </div>
   </div>
 </div>
