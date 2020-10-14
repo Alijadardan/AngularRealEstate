@@ -12,8 +12,7 @@ export class SearchService {
 
   searchParam(data){
     let headers = new HttpHeaders;
-    let params = new HttpParams({ fromObject: { price_from: data.minPrice, price_to: "222", city: data.city} });
     console.log(data);
-    return this.http.get<any>(this.baseUrl+"/search", { headers, params });
+    return this.http.get<any>(this.baseUrl+"/search", { headers, params: data });
   }
 }

@@ -72,8 +72,8 @@ export class SearchFormComponent implements OnInit {
   }
 
   onSubmit() {
-    this.searchForm.value.minPrice = this.minValuePrice;
-    this.searchForm.value.maxPrice = this.maxValuePrice;
+    this.searchForm.value.price_from = this.minValuePrice;
+    this.searchForm.value.price_to = this.maxValuePrice;
     this.searchForm.value.minMeter = this.minValueMeter;
     this.searchForm.value.maxMeter = this.maxValueMeter;
     this.romoveEmpty(this.searchForm.value);
