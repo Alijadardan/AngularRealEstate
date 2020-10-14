@@ -1,4 +1,4 @@
-import { ErrorInterceptor } from './shared/helpers/error.interceptor';
+import { ErrorInterceptor } from './shared/interceptors/error.interceptor';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
