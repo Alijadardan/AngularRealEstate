@@ -1,19 +1,19 @@
+import { MatTableDataSource } from '@angular/material/table';
+import { MatSort } from '@angular/material/sort';
+import { MatPaginator } from '@angular/material/paginator';
 import { ArticleAdminService } from './../../../../services/admin/article-admin.service';
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import Articles from 'src/app/shared/models/Articles';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { Toast } from 'src/app/shared/helpers/Toast';
-import { Router } from '@angular/router';
+import Articles from 'src/app/shared/models/Articles';
 
 @Component({
-  selector: 'admin-aticles',
-  templateUrl: './aticles.component.html',
-  styleUrls: ['./aticles.component.scss']
+  selector: 'app-show-articles',
+  templateUrl: './show-articles.component.html',
+  styleUrls: ['./show-articles.component.scss']
 })
-export class AticlesComponent implements OnInit, AfterViewInit {
+export class ShowArticlesComponent implements OnInit, AfterViewInit {
 
   articles: MatTableDataSource<Articles>;
   displayedColumns: string[] = ['id', 'title', 'city', 'address', 'type','phonenumber', 'action'];

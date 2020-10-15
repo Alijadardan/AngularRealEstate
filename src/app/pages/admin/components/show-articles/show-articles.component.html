@@ -1,7 +1,7 @@
 <div class="card">
   <div class="card-header d-flex justify-content-between">
     <div class="my-auto">Articles</div>
-    <a routerLink="/admin/add" class="green-btn article__add-btn">Add Article</a>
+    <a routerLink="add" class="green-btn article__add-btn">Add Article</a>
   </div>
   <div class="card-body">
     <div class="article">
@@ -51,7 +51,7 @@
         <ng-container matColumnDef="action">
           <mat-header-cell *matHeaderCellDef> Action </mat-header-cell >
           <mat-cell *matCellDef="let element" class="action-link">
-            <a class="mat-column-action__edit" type="button" routerLink="/admin/edit/{{element.id}}"><img src="../../../../../assets/svg/pen-solid.svg" alt=""></a>
+            <a class="mat-column-action__edit" type="button" routerLink="edit/{{element.id}}"><img src="../../../../../assets/svg/pen-solid.svg" alt=""></a>
             <a class="mat-column-action__delete" type="button" (click)="deleteArticle(element.id)"><img src="../../../../../assets/svg/trash-solid.svg" alt=""></a>
           </mat-cell>
         </ng-container>

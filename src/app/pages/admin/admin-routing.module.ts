@@ -3,7 +3,6 @@ import { AddEditArticlesComponent } from './components/add-edit-articles/add-edi
 import { DirtyCheckGuard } from './../../shared/guards/dirty-check.guard';
 import { AboutComponent } from './components/about/about.component';
 import { ContactComponent } from './components/contact/contact.component';
-import { AticlesComponent } from './components/aticles/aticles.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AdminComponent } from './admin.component';
 import { NgModule } from '@angular/core';
@@ -19,7 +18,7 @@ const routes: Routes = [
       },
       {
         path: 'articles',
-        component: AticlesComponent
+        loadChildren: () => import('./components/articles/articles.module').then((m) => m.ArticlesModule),
       },
       {
         path: 'contact',
@@ -28,16 +27,6 @@ const routes: Routes = [
       {
         path: 'about',
         component: AboutComponent,
-        canDeactivate: [DirtyCheckGuard]
-      },
-      {
-        path: 'add',
-        component: AddEditArticlesComponent,
-        canDeactivate: [DirtyCheckGuard]
-      },
-      {
-        path: 'edit/:id',
-        component: AddEditArticlesComponent,
         canDeactivate: [DirtyCheckGuard]
       },
       {

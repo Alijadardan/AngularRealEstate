@@ -1,5 +1,5 @@
 import { SearchService } from './../../services/search.service';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder } from '@angular/forms';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { LabelType, Options } from 'ng5-slider';
 
