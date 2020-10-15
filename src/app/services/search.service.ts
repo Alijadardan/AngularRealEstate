@@ -1,3 +1,4 @@
+import { environment } from './../../environments/environment';
 import { HttpClient, HttpHeaders, HttpParams, HttpUrlEncodingCodec } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
@@ -6,13 +7,11 @@ import { Injectable } from '@angular/core';
 })
 export class SearchService {
 
-  baseUrl = "http://realestate-task.draft2017.com/api";
-
   constructor(private http: HttpClient) { }
 
   searchParam(data){
     let headers = new HttpHeaders;
     console.log(data);
-    return this.http.get<any>(this.baseUrl+"/search", { headers, params: data });
+    return this.http.get<any>(environment.baseUrl+"/search", { headers, params: data });
   }
 }

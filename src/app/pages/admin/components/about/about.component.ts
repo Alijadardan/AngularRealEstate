@@ -3,6 +3,7 @@ import { AboutAdminService } from '../../../../services/admin/about-admin.servic
 import { Component, OnInit } from '@angular/core';
 import AboutUs from 'src/app/shared/models/AboutUs';
 import { Toast } from 'src/app/shared/helpers/Toast';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'admin-about',
@@ -48,13 +49,21 @@ export class AboutComponent implements OnInit {
   }
 
   getAboutUs(){
-    this.aboutAdminService.getAboutUs().subscribe((data)=>{
-      this.about = data['About-Us'];
-      this.aboutForm.patchValue({
-        title: this.about.title,
-        body: this.about.body
-      });
-      this.isDirty = false;
+    this.aboutAdminService.getAboutUs().subscribe({
+      next: (data) => {
+        this.about = data['About-Us'];
+        this.aboutForm.patchValue({
+          title: this.about.title,
+          body: this.about.body
+        });
+        this.isDirty = false;
+      },
+      error: error => {
+        Swal.fire({
+          text: 'Somthing went wrong :' + error,
+          icon: 'error'
+        });
+      }
     });
   }
 

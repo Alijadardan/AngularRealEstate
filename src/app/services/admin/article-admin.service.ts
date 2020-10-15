@@ -1,3 +1,4 @@
+import { environment } from './../../../environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import Articles from 'src/app/shared/models/Articles';
@@ -8,23 +9,21 @@ import FullArticle from 'src/app/shared/models/FullArticle';
 })
 export class ArticleAdminService {
 
-  baseUrl = "http://realestate-task.draft2017.com/api";
-
   constructor(private http: HttpClient) { }
 
   getArticles(){
-    return this.http.get<Articles>(this.baseUrl+"/search", {headers: new HttpHeaders({'Authorization': 'Bearer ' + localStorage.getItem('userToken')})});
+    return this.http.get<Articles>(environment.baseUrl+"/search", {headers: new HttpHeaders({'Authorization': 'Bearer ' + localStorage.getItem('userToken')})});
   }
 
   getArticleById(id){
-    return this.http.get<any>(this.baseUrl+"/article/property/"+id, {headers: new HttpHeaders({'Authorization': 'Bearer ' + localStorage.getItem('userToken')})})
+    return this.http.get<any>(environment.baseUrl+"/article/property/"+id, {headers: new HttpHeaders({'Authorization': 'Bearer ' + localStorage.getItem('userToken')})})
   }
 
   createArticle(data, file){
     console.log(file);
     const formData: FormData = new FormData();
     formData.append('file', file, file.name);
-    return this.http.post<any>(this.baseUrl+"/create-article", {
+    return this.http.post<any>(environment.baseUrl+"/create-article", {
       'title': data.title,
       'body': data.body,
       'price': data.price,
@@ -42,7 +41,7 @@ export class ArticleAdminService {
 
   updateArticle(id, data){
     console.log(id, data.title.toString());
-    return this.http.put<any>(this.baseUrl+"/update-article/"+id, {
+    return this.http.put<any>(environment.baseUrl+"/update-article/"+id, {
       'title': data.title,
       'body': data.body,
       'city': data.city,
@@ -56,6 +55,6 @@ export class ArticleAdminService {
   }
 
   deleteArticle(id){
-    return this.http.delete<any>(this.baseUrl+"/article/delete/"+id, {headers: new HttpHeaders({'Authorization': 'Bearer ' + localStorage.getItem('userToken')})});
+    return this.http.delete<any>(environment.baseUrl+"/article/delete/"+id, {headers: new HttpHeaders({'Authorization': 'Bearer ' + localStorage.getItem('userToken')})});
   }
 }
