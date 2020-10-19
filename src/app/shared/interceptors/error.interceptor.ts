@@ -29,36 +29,19 @@ export class ErrorInterceptor implements HttpInterceptor {
         return event;
       }),
       catchError((error: HttpErrorResponse) => {
-        if (error.status === 0 || (error.status === 401 && error.error.title == "Unauthorized")) {
-          // this.loginService.logOut();
+        if (error.status === 0 || (error.status === 401)) {
           Swal.fire({
-            text: 'You can not access this page:' + error,
-            icon: 'error'
-          });
-          console.log(error);
+            title: 'You can not access this page:' + error.message,
+            icon: 'info'
+          }).then((result) => {
+            localStorage.clear();
+            location.reload();
+          })
         }
         return throwError(error);
       })
     );
   }
-
-
-
-  validateToken() {
-    new Promise((resolve, rejects) => {
-      this.articleAdminService.getArticles().subscribe({
-        next: () => {
-          resolve();
-        },
-        error: () => {
-          rejects();
-        }
-      }
-      );
-    })
-  }
-
-
 
   private addHeaders(
     request: HttpRequest<any>,

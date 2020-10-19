@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import AboutUs from 'src/app/shared/models/AboutUs';
 import { Toast } from 'src/app/shared/helpers/Toast';
 import Swal from 'sweetalert2';
-import {Location} from '@angular/common';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'admin-about',
@@ -27,19 +27,19 @@ export class AboutComponent implements OnInit {
     this.aboutForm.valueChanges.subscribe(e => this.isDirty = true);
   }
 
-  onSubmit(){
+  onSubmit() {
     this.updateAboutUs(this.aboutForm.value);
   }
 
-  updateAboutUs(data){
+  updateAboutUs(data) {
     this.aboutAdminService.updateAboutUs(data).subscribe({
       next: (data) => {
-        if(data.Message == "You didnt change anything."){
+        if (data.Message == "You didnt change anything.") {
           Toast.fire({
             icon: 'info',
             title: data.Message
           })
-        }else {
+        } else {
           Toast.fire({
             icon: 'success',
             title: data.Message
@@ -50,19 +50,19 @@ export class AboutComponent implements OnInit {
     });
   }
 
-  getAboutUs(){
-    this.aboutAdminService.getAboutUs().subscribe({
-      next: (data) => {
+  getAboutUs() {
+    this.aboutAdminService.getAboutUs().subscribe((data) => {
+      if (data && !(data.Message == "Not authorizated")) {
         this.about = data['About-Us'];
+        console.log(this.about);
         this.aboutForm.patchValue({
           title: this.about.title,
           body: this.about.body
         });
         this.isDirty = false;
-      },
-      error: error => {
+      } else {
         Swal.fire({
-          text: 'Somthing went wrong :' + error.message,
+          text: 'Somthing went wrong :' + data.Message,
           icon: 'error'
         });
         this._location.back();
@@ -70,7 +70,7 @@ export class AboutComponent implements OnInit {
     });
   }
 
-  buildForm(){
+  buildForm() {
     this.aboutForm = this.formBuilder.group({
       title: ['', Validators.required],
       body: ['', Validators.required]

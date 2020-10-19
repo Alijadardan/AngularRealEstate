@@ -34,7 +34,7 @@ export class NavbarComponent implements OnInit {
           icon: 'success',
           title: data.message
         })
-        localStorage.removeItem('userToken');
+        localStorage.clear();
         this.route.navigate(['/']);
       }
     });

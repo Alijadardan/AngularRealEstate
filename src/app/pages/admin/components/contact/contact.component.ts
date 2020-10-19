@@ -26,7 +26,7 @@ export class ContactComponent implements OnInit, AfterViewInit {
     private _location: Location) { }
 
   ngOnInit(): void {
-    if(localStorage.getItem('contactData')){
+    if(localStorage.getItem('contactData') && (localStorage.getItem('contactData') == undefined)){
       this.contacts = new MatTableDataSource(JSON.parse(localStorage.getItem('contactData')));
     }else{
       this.getContacts();
@@ -50,21 +50,20 @@ export class ContactComponent implements OnInit, AfterViewInit {
   }
 
   getContacts(){
-    this.contactService.getContacts().subscribe({
-      next: (data) => {
+    this.contactService.getContacts().subscribe((data)=>{
         console.log(data);
-        this.contacts = new MatTableDataSource(data['Contact-Us']);
-        this.saveLoaclStorage('contactData', data['Contact-Us']);
-        this.contacts.paginator = this.paginator;
-        this.contacts.sort = this.sort;
-      },
-      error: error => {
-        Swal.fire({
-          text: 'Somthing went wrong :' + error.message,
-          icon: 'error'
-        });
-        this._location.back();
-      }
+        if(data && !(data.Message == "Not authorizated")){
+          this.contacts = new MatTableDataSource(data['Contact-Us']);
+          this.saveLoaclStorage('contactData', data['Contact-Us']);
+          this.contacts.paginator = this.paginator;
+          this.contacts.sort = this.sort;
+        }else {
+          Swal.fire({
+            text: 'Somthing went wrong :' + data.Message,
+            icon: 'error'
+          });
+          this._location.back();
+        }
     });
   }
 

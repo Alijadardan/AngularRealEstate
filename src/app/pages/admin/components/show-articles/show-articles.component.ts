@@ -25,7 +25,7 @@ export class ShowArticlesComponent implements OnInit, AfterViewInit {
     private router: Router) { }
 
   ngOnInit(): void {
-    if(localStorage.getItem('articlesData')){
+    if(localStorage.getItem('articlesData') && (localStorage.getItem('articlesData') == undefined)){
       this.articles = new MatTableDataSource(JSON.parse(localStorage.getItem('articlesData')));
     }else{
       this.getArticles();
@@ -33,7 +33,7 @@ export class ShowArticlesComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    if(localStorage.getItem('articlesData')){
+    if(localStorage.getItem('articlesData') && (localStorage.getItem('articlesData') == undefined)){
       this.articles.paginator = this.paginator;
       this.articles.sort = this.sort;
     }
@@ -100,9 +100,9 @@ export class ShowArticlesComponent implements OnInit, AfterViewInit {
   getArticles(){
     this.articleAdminService.getArticles().subscribe({
       next: (data) => {
-        console.log(data['Articles'].data);
-        this.articles = new MatTableDataSource(data['Articles'].data);
-        this.saveLoaclStorage('articlesData', data['Articles'].data);
+        console.log(data['Articles']);
+        this.articles = new MatTableDataSource(data['Articles']);
+        this.saveLoaclStorage('articlesData', data['Articles']);
         this.articles.paginator = this.paginator;
         this.articles.sort = this.sort;
       },

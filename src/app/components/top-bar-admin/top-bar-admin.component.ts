@@ -30,7 +30,7 @@ export class TopBarAdminComponent implements OnInit {
           icon: 'success',
           title: data.message
         })
-        localStorage.removeItem('userToken');
+        localStorage.clear();
         location.reload();
       }
     });

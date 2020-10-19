@@ -12,7 +12,7 @@ export class ArticleAdminService {
   constructor(private http: HttpClient) { }
 
   getArticles(){
-    return this.http.get<Articles>(environment.baseUrl+"/search");
+    return this.http.get<Articles>(environment.baseUrl+"/articles");
   }
 
   getArticleById(id){

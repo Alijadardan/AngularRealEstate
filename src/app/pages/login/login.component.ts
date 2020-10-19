@@ -26,12 +26,9 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.buildForm();
-    // this.auth.currentUser.subscribe(user => {
-    //   this.user = user;
-    //   console.log(user);
-    // })
     this.socialauth.authState.subscribe((user) => {
       this.user = user;
+      console.log(user);
       if(user){
         localStorage.setItem('userToken', user.idToken);
         localStorage.setItem('userName', user.name);

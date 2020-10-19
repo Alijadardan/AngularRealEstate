@@ -1,3 +1,4 @@
+import { AdminGuard } from './../../shared/guards/admin.guard';
 import { SingleContactComponent } from './components/single-contact/single-contact.component';
 import { AddEditArticlesComponent } from './components/add-edit-articles/add-edit-articles.component';
 import { DirtyCheckGuard } from './../../shared/guards/dirty-check.guard';
@@ -6,7 +7,7 @@ import { ContactComponent } from './components/contact/contact.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AdminComponent } from './admin.component';
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule, CanActivate } from '@angular/router';
 
 const routes: Routes = [
   {
@@ -22,12 +23,14 @@ const routes: Routes = [
       },
       {
         path: 'contact',
-        component: ContactComponent
+        component: ContactComponent,
+        canActivate: [AdminGuard]
       },
       {
         path: 'about',
         component: AboutComponent,
-        canDeactivate: [DirtyCheckGuard]
+        canDeactivate: [DirtyCheckGuard],
+        canActivate: [AdminGuard]
       },
       {
         path: 'contact/view/:id',
