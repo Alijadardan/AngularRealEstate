@@ -1,5 +1,10 @@
 @import "../../../../styles/variables";
 .card {
+
+  >img {
+    height: 192px;
+  }
+
   &-body {
     padding: 30px;
     text-align: left;

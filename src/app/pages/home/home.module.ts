@@ -14,6 +14,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SearchResultsComponent } from './../../components/search-results/search-results.component';
 import { PropertieCardStaticComponent } from './../../shared/components/propertie-card-static/propertie-card-static.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 import { HomeRoutingModule } from './home-routing.module';
 import { TopHeaderComponent } from 'src/app/shared/components/top-header/top-header.component';
@@ -21,6 +22,7 @@ import { AboutComponent } from 'src/app/components/about/about.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TopBarAdminComponent } from 'src/app/components/top-bar-admin/top-bar-admin.component';
 import { Ng5SliderModule } from 'ng5-slider';
+import { ArticleDetailsComponent } from './../../components/article-details/article-details.component';
 @NgModule({
   declarations: [
     HomeComponent,
@@ -38,7 +40,8 @@ import { Ng5SliderModule } from 'ng5-slider';
     AgentsComponent,
     TopBarAdminComponent,
     SearchResultsComponent,
-    PropertieCardStaticComponent
+    PropertieCardStaticComponent,
+    ArticleDetailsComponent
   ],
   imports: [
     CommonModule,
@@ -46,7 +49,8 @@ import { Ng5SliderModule } from 'ng5-slider';
     ReactiveFormsModule,
     MatSliderModule,
     Ng5SliderModule,
-    FormsModule
+    FormsModule,
+    NgxPaginationModule
   ]
 })
 export class HomeModule { }

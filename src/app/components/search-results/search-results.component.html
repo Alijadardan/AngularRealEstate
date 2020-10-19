@@ -5,7 +5,10 @@
         No result found
       </div>
       <div *ngFor="let result of searchResults" class="col-12 col-md-4 mb-4">
-        <app-propertie-card [title]="result.title" [content]="result.body" [price]="result.price"></app-propertie-card>
+        <a class="w-100 text-decoration-none" type="button" (click)="goToArticle(result)">
+          <app-propertie-card [src]="result.photo[0]?.photo" [title]="result.title" [content]="result.body"
+            [price]="result.price"></app-propertie-card>
+        </a>
       </div>
     </div>
   </div>

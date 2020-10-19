@@ -99,7 +99,7 @@ export class AddEditArticlesComponent implements OnInit {
       for: ['both', Validators.required],
       type: ['1+1', Validators.required],
       available: [1, Validators.required],
-      phone_number: ['', Validators.required],
+      phone_number: ['', Validators.required]
     });
   }
 
@@ -117,8 +117,7 @@ export class AddEditArticlesComponent implements OnInit {
         for: data.for,
         type: data.type,
         available: data.available,
-        phone_number: data.phonenumber,
-        filenames: data.filenames
+        phone_number: data.phonenumber
       });
       this.isDirty = false;
     });

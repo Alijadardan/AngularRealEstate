@@ -10,6 +10,7 @@ export class PropertieCardComponent implements OnInit {
   @Input() title;
   @Input() content;
   @Input() price;
+  @Input() src;
 
   constructor() { }
 

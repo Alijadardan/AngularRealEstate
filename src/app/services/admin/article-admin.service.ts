@@ -12,11 +12,11 @@ export class ArticleAdminService {
   constructor(private http: HttpClient) { }
 
   getArticles(){
-    return this.http.get<Articles>(environment.baseUrl+"/search", {headers: new HttpHeaders({'Authorization': 'Bearer ' + localStorage.getItem('userToken')})});
+    return this.http.get<Articles>(environment.baseUrl+"/search");
   }
 
   getArticleById(id){
-    return this.http.get<any>(environment.baseUrl+"/article/property/"+id, {headers: new HttpHeaders({'Authorization': 'Bearer ' + localStorage.getItem('userToken')})})
+    return this.http.get<any>(environment.baseUrl+"/article/property/"+id)
   }
 
   createArticle(data, file){
@@ -34,9 +34,7 @@ export class ArticleAdminService {
       'filenames': formData,
       'type': data.type,
       'available': data.available
-    }, {headers: new HttpHeaders({
-      'Accept': 'application/json',
-      'Authorization': 'Bearer ' + localStorage.getItem('userToken')})});
+    }, {headers: new HttpHeaders({'Accept': 'application/json'})});
   }
 
   updateArticle(id, data){
@@ -51,10 +49,10 @@ export class ArticleAdminService {
       'type': data.type,
       'available': data.available,
       'phonenumber': data.phone_number
-    }, {headers: new HttpHeaders({'Authorization': 'Bearer ' + localStorage.getItem('userToken')})});
+    });
   }
 
   deleteArticle(id){
-    return this.http.delete<any>(environment.baseUrl+"/article/delete/"+id, {headers: new HttpHeaders({'Authorization': 'Bearer ' + localStorage.getItem('userToken')})});
+    return this.http.delete<any>(environment.baseUrl+"/article/delete/"+id);
   }
 }

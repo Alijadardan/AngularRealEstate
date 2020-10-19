@@ -6,6 +6,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Toast } from 'src/app/shared/helpers/Toast';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'admin-contact',
@@ -21,7 +22,8 @@ export class ContactComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private contactService: ContactAdminService) { }
+  constructor(private contactService: ContactAdminService,
+    private _location: Location) { }
 
   ngOnInit(): void {
     if(localStorage.getItem('contactData')){
@@ -50,6 +52,7 @@ export class ContactComponent implements OnInit, AfterViewInit {
   getContacts(){
     this.contactService.getContacts().subscribe({
       next: (data) => {
+        console.log(data);
         this.contacts = new MatTableDataSource(data['Contact-Us']);
         this.saveLoaclStorage('contactData', data['Contact-Us']);
         this.contacts.paginator = this.paginator;
@@ -57,9 +60,10 @@ export class ContactComponent implements OnInit, AfterViewInit {
       },
       error: error => {
         Swal.fire({
-          text: 'Somthing went wrong :' + error,
+          text: 'Somthing went wrong :' + error.message,
           icon: 'error'
         });
+        this._location.back();
       }
     });
   }

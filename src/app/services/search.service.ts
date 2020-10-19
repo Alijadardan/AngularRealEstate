@@ -7,6 +7,8 @@ import { Injectable } from '@angular/core';
 })
 export class SearchService {
 
+  clickedArticle;
+
   constructor(private http: HttpClient) { }
 
   searchParam(data){
@@ -14,4 +16,13 @@ export class SearchService {
     console.log(data);
     return this.http.get<any>(environment.baseUrl+"/search", { headers, params: data });
   }
+
+  setCLickedArticleObj(obj){
+    this.clickedArticle  = obj;
+ }
+
+ getClickedArticle(){
+  return this.clickedArticle;
+}
+
 }

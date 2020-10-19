@@ -1,0 +1,52 @@
+.article-details {
+&__price {
+    font-family: "Dosis";
+    font-size: 14px;
+    letter-spacing: 1px;
+    color: #70b247;
+    border-radius: 3px;
+}
+
+  &__for {
+    &-rent{
+      background-color: #70b247;
+      border-radius: 3px;
+  padding: 5px;
+  font-size: 11px;
+  letter-spacing: 1px;
+  color: #ffffff;
+  font-weight: 700;
+  font-family: "Dosis";
+  text-align: center;
+  margin-right: 15px;
+  text-transform: uppercase;
+    }
+    &-sale {
+      background-color: rgb(163, 16, 16);
+      border-radius: 3px;
+  padding: 5px;
+  font-size: 11px;
+  letter-spacing: 1px;
+  color: #ffffff;
+  font-weight: 700;
+  font-family: "Dosis";
+  text-align: center;
+  margin-right: 15px;
+  text-transform: uppercase;
+    }
+    &-both {
+      background-color: #FFC107;
+      border-radius: 3px;
+  padding: 5px;
+  font-size: 11px;
+  letter-spacing: 1px;
+  color: #ffffff;
+  font-weight: 700;
+  font-family: "Dosis";
+  text-align: center;
+  margin-right: 15px;
+  text-transform: uppercase;
+    }
+  }
+
+}

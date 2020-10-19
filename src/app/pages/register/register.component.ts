@@ -5,6 +5,10 @@ import { Router } from '@angular/router';
 import { MustMatch } from 'src/app/shared/helpers/mustMatch.validator';
 import Swal from 'sweetalert2';
 
+import { SocialAuthService } from 'angularx-social-login';
+import { SocialUser } from 'angularx-social-login';
+import { GoogleLoginProvider, FacebookLoginProvider } from 'angularx-social-login';
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -13,13 +17,24 @@ import Swal from 'sweetalert2';
 export class RegisterComponent implements OnInit {
 
   registerForm: FormGroup;
+  user: SocialUser;
+  loggedIn: boolean;
 
   constructor(private formBuilder: FormBuilder,
     private auth: AuthService,
+    private socialauth: SocialAuthService,
     private route: Router) { }
 
   ngOnInit(): void {
     this.buildForm();
+    this.socialauth.authState.subscribe((user) => {
+      this.user = user;
+      console.log(user);
+      localStorage.setItem('userToken', user.idToken);
+      localStorage.setItem('userName', user.name);
+      this.route.navigate(['admin']);
+      this.loggedIn = (user != null);
+    });
   }
 
   onSubmit(){
@@ -51,6 +66,14 @@ export class RegisterComponent implements OnInit {
     }, {
       validator: MustMatch('password', 'password_confirmation')
     });
+  }
+
+  signInWithGoogle(): void {
+    this.socialauth.signIn(GoogleLoginProvider.PROVIDER_ID);
+  }
+
+  signInWithFB(): void {
+    this.socialauth.signIn(FacebookLoginProvider.PROVIDER_ID);
   }
 
   get form() {

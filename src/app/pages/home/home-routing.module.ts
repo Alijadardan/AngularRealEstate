@@ -1,3 +1,5 @@
+import { ArticleDetailsComponent } from './../../components/article-details/article-details.component';
+import { SearchFormComponent } from './../../components/search-form/search-form.component';
 import { DirtyCheckGuard } from './../../shared/guards/dirty-check.guard';
 import { HomeComponent } from './home.component';
 import { ContactComponent } from 'src/app/components/contact/contact.component';
@@ -22,6 +24,11 @@ const routes: Routes = [
         path: 'contact',
         component: ContactComponent,
         canDeactivate: [DirtyCheckGuard]
+      }
+      ,
+      {
+        path: 'article-details',
+        component: ArticleDetailsComponent
       }
     ]
   }

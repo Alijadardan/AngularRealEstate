@@ -12,14 +12,14 @@ export class ContactAdminService {
   constructor(private http: HttpClient) { }
 
   getContacts(){
-    return this.http.get<ContactUs>(environment.baseUrl+"/contact-us", {headers: new HttpHeaders({'Authorization': 'Bearer ' + localStorage.getItem('userToken')})});
+    return this.http.get<ContactUs>(environment.baseUrl+"/contact-us");
   }
 
   getContactById(id){
-    return this.http.get<SingleContact>(environment.baseUrl+"/contact/"+id, {headers: new HttpHeaders({'Authorization': 'Bearer ' + localStorage.getItem('userToken')})})
+    return this.http.get<SingleContact>(environment.baseUrl+"/contact/"+id)
   }
 
   deleteContact(id){
-    return this.http.delete(environment.baseUrl+"/contact/delete/"+id, {headers: new HttpHeaders({'Authorization': 'Bearer ' + localStorage.getItem('userToken')})});
+    return this.http.delete(environment.baseUrl+"/contact/delete/"+id);
   }
 }

@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import AboutUs from 'src/app/shared/models/AboutUs';
 import { Toast } from 'src/app/shared/helpers/Toast';
 import Swal from 'sweetalert2';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'admin-about',
@@ -17,7 +18,8 @@ export class AboutComponent implements OnInit {
   isDirty = false;
 
   constructor(private aboutAdminService: AboutAdminService,
-    private formBuilder: FormBuilder) { }
+    private formBuilder: FormBuilder,
+    private _location: Location) { }
 
   ngOnInit(): void {
     this.buildForm();
@@ -60,9 +62,10 @@ export class AboutComponent implements OnInit {
       },
       error: error => {
         Swal.fire({
-          text: 'Somthing went wrong :' + error,
+          text: 'Somthing went wrong :' + error.message,
           icon: 'error'
         });
+        this._location.back();
       }
     });
   }

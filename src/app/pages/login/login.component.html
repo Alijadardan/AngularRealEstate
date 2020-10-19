@@ -32,6 +32,10 @@
                                   <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
                                       <a class="small" routerLink="/reset" routerLinkActive="router-link-active" >Forgot Password?</a>
                                       <button class="btn btn-primary" type="submit" [disabled]="!loginForm.valid">Login</button>
+                                      <div class="card-block">
+                                        <button class="btn btn-social-icon btn-google" (click)="signInWithGoogle()"><img src="../../../assets/svg/google-brands.svg" alt=""></button>
+                                        <button class="btn btn-social-icon btn-facebook" (click)="signInWithFB()"><img src="../../../assets/svg/facebook-register.svg" alt=""></button>
+                                      </div>
                                   </div>
                               </form>
                           </div>

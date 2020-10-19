@@ -67,8 +67,12 @@
                       [disabled]="!registerForm.valid">Create Account</button></div>
                 </form>
               </div>
-              <div class="card-footer text-center">
-                <div class="small"><a routerLink="/login">Have an account? Go to login</a></div>
+              <div class="card-footer justify-content-between d-flex">
+                <div class="small my-auto"><a routerLink="/login">Have an account? Go to login</a></div>
+                <div class="card-block">
+                  <button class="btn btn-social-icon btn-google" (click)="signInWithGoogle()"><img src="../../../assets/svg/google-brands.svg" alt=""></button>
+                  <button class="btn btn-social-icon btn-facebook" (click)="signInWithFB()"><img src="../../../assets/svg/facebook-register.svg" alt=""></button>
+                </div>
               </div>
             </div>
           </div>

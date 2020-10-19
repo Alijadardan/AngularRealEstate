@@ -1,3 +1,4 @@
+import { SocialAuthService, SocialUser } from 'angularx-social-login';
 import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { AuthService } from './../../../../services/auth/auth.service';
 import { Component, OnInit } from '@angular/core';
@@ -12,17 +13,22 @@ import { Toast } from 'src/app/shared/helpers/Toast';
 export class NavbarComponent implements OnInit {
 
   searchForm: FormGroup;
+  user;
 
   constructor(private route: Router,
     private auth: AuthService,
-    private formBuilder: FormBuilder) { }
+    private formBuilder: FormBuilder,
+    private socialauth: SocialAuthService,) { }
 
   ngOnInit(): void {
     this.buildForm();
+    this.auth.currentUser.subscribe(user => {
+      this.user = user;
+    });
   }
 
-  logout(){
-    this.auth.logout(localStorage.getItem('userToken')).subscribe({
+  logout() {
+    this.auth.logout().subscribe({
       next: (data) => {
         Toast.fire({
           icon: 'success',
@@ -34,7 +40,17 @@ export class NavbarComponent implements OnInit {
     });
   }
 
-  buildForm(){
+  signOut(): void {
+    if (this.user instanceof SocialUser) {
+      this.socialauth.signOut();
+      localStorage.clear();
+      this.route.navigate(['/']);
+    } else {
+      this.logout();
+    }
+  }
+
+  buildForm() {
     this.searchForm = this.formBuilder.group({
       search: ['', Validators.required],
     });

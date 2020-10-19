@@ -76,6 +76,7 @@ export class SearchFormComponent implements OnInit {
     this.searchForm.value.price_to = this.maxValuePrice;
     this.searchForm.value.minMeter = this.minValueMeter;
     this.searchForm.value.maxMeter = this.maxValueMeter;
+    // this.searchForm.value.page = 1;
     this.romoveEmpty(this.searchForm.value);
     this.searchService.searchParam(this.searchForm.value).subscribe((data) => {
       this.searchResults.emit(data['Articles'].data);
@@ -94,14 +95,6 @@ export class SearchFormComponent implements OnInit {
   }
 
 
-  formatLabel(value: number) {
-    if (value >= 1000) {
-      return Math.round(value / 1000) + 'k';
-    }
-
-    return value;
-  }
-
   get form() {
     return this.searchForm.controls;
   }
@@ -114,5 +107,4 @@ export class SearchFormComponent implements OnInit {
       }
     });
   }
-
 }

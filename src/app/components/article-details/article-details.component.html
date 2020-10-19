@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="card w-75 mx-auto my-5">
+    <img src="http://realestate-task.draft2017.com/storage/photos/{{ incomingArticle.photo[0]?.photo }}" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">{{ incomingArticle.title }}</h5>
+      <p class="card-text">{{ incomingArticle.body }}</p>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item d-flex justify-content-between">
+        <div class="article-details__price">{{ incomingArticle.price }}$</div>
+        <div *ngIf="incomingArticle.for == 'rent'" class="article-details__for-rent">{{ incomingArticle.for }}</div>
+        <div *ngIf="(incomingArticle.for == 'sale')" class="article-details__for-sale">{{ incomingArticle.for }}</div>
+        <div *ngIf="(incomingArticle.for == 'both')" class="article-details__for-both">{{ incomingArticle.for }}</div>
+      </li>
+      <li class="list-group-item">Type: {{ incomingArticle.type }}</li>
+      <li class="list-group-item">City: {{ incomingArticle.city }}</li>
+      <li class="list-group-item">Address: {{ incomingArticle.address }}</li>
+      <li class="list-group-item">Number: {{ incomingArticle.phonenumber }}</li>
+    </ul>
+  </div>
+</div>

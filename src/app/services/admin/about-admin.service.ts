@@ -12,10 +12,10 @@ export class AboutAdminService {
   constructor(private http: HttpClient) { }
 
   getAboutUs(){
-    return this.http.get(environment.baseUrl+"/about-us", {headers: new HttpHeaders({'Authorization': 'Bearer ' + localStorage.getItem('userToken')})});
+    return this.http.get(environment.baseUrl+"/about-us");
   }
 
   updateAboutUs(data: AboutUs){
-    return this.http.put<Message>(environment.baseUrl+"/update/about-us", data, {headers: new HttpHeaders({'Authorization': 'Bearer ' + localStorage.getItem('userToken')})});
+    return this.http.put<Message>(environment.baseUrl+"/update/about-us", data);
   }
 }
