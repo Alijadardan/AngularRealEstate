@@ -1,6 +1,6 @@
 # RealEstateOne
 
-A Real estate WebPage including admin dashboard, with a lot of fuconalities like search, updating data from admin dashboard, CRUD operation for contacts , articles etc. Use of slider for price range , making http requests , Reactive forms , lazy loading , auth and social login , Angular material , Tables , Sweet Alerts, Toasts , Handling Img , and File Uploads, Dirty Check, Guards , Interceptors , helpers like mustMatch password, models, pagination etc.
+A Real estate WebPage including admin dashboard, with a lot of functionalities like search, updating data from admin dashboard, CRUD operation for contacts , articles etc. Use of slider for price range , making http requests , Reactive forms , lazy loading , auth and social login , Angular material , Tables , Sweet Alerts, Toasts , Handling Img , and File Uploads, Dirty Check, Guards , Interceptors , helpers like mustMatch password, models, pagination etc.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.0-next.0.
 
